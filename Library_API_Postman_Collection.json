@@ -1,0 +1,213 @@
+{
+  "info": {
+    "name": "Open Library Subscription API",
+    "description": "Simple Express API demonstrating SSLCommerz limits and payments.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"postman.test@example.com\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/register",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "register"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Subscribe to Tier",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"apiKey\": \"{{apiKey}}\",\n    \"targetTier\": \"basic\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/subscribe",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "subscribe"
+          ]
+        },
+        "description": "Tiers are 'free', 'basic', and 'premium'."
+      }
+    },
+    {
+      "name": "Proxy Search Library API",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/search?q=the hobbit&apiKey={{apiKey}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "the hobbit"
+            },
+            {
+              "key": "apiKey",
+              "value": "{{apiKey}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cancel Subscription",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"apiKey\": \"{{apiKey}}\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/cancel-subscription",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "cancel-subscription"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Mock SSLCommerz Success Callback",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "tran_id",
+              "value": "{{tranId}}",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/payment/success",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "payment",
+            "success"
+          ]
+        },
+        "description": "Normally called by SSLCommerz"
+      }
+    },
+    {
+      "name": "Mock SSLCommerz Fail Callback",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "tran_id",
+              "value": "{{tranId}}",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/payment/fail",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "payment",
+            "fail"
+          ]
+        },
+         "description": "Normally called by SSLCommerz"
+      }
+    },
+    {
+      "name": "Health Check Index",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            ""
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3030"
+    },
+    {
+      "key": "apiKey",
+      "value": "YOUR-API-KEY-HERE"
+    },
+    {
+      "key": "tranId",
+      "value": "YOUR-TRAN-ID-HERE"
+    }
+  ]
+}
