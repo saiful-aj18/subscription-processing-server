@@ -35,16 +35,23 @@ A RESTful API built with **Node.js**, **Express.js**, and **MongoDB** that demon
 ## 📂 Project Structure
 
 ```
-src/
-├── config/
-├── controllers/
-├── middleware/
-├── models/
-├── routes/
-├── services/
-├── utils/
-├── app.js
-└── server.js
+
+├── src/
+│   ├── config/
+│   ├── controllers/
+│   ├── models/
+│   ├── repositories/
+│   ├── routes/
+│   ├── services/
+│   └── utils/
+│
+├── .env
+├── .gitignore
+├── docker-compose.yml
+├── index.js
+├── Library_API_Postman_Collection.json
+├── package.json
+└── package-lock.json
 ```
 
 ---
@@ -72,7 +79,7 @@ npm install
 ### Create a `.env` file
 
 ```env
-PORT=3030
+PORT=
 
 MONGODB_URI=your_mongodb_connection_string
 
